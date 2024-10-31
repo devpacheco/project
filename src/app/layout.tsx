@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { AuthProvider } from "@/providers/auth";
+import { ModalProvider } from "@/providers/modal"
 
 const Roboto_init = Roboto({
   subsets: ["latin"],
@@ -26,8 +27,10 @@ export default function RootLayout({
         className={`${Roboto_init.variable} antialiased`}
       >
         <AuthProvider>
-          <Header/>
-          {children}
+          <ModalProvider>
+            <Header/>
+            {children}
+          </ModalProvider>
         </AuthProvider>
       </body>
     </html>
